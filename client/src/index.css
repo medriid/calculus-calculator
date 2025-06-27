@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 16.5%);
+  --muted-foreground: hsl(0, 0%, 80%);
+  --popover: hsl(0, 0%, 10.2%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --card: hsl(0, 0%, 10.2%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 16.5%);
+  --input: hsl(0, 0%, 16.5%);
+  --primary: hsl(174, 100%, 41.6%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(0, 0%, 16.5%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(0, 0%, 16.5%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(0, 0%, 100%);
+  --radius: 0.5rem;
+  
+  /* Custom calculator colors */
+  --calc-black: hsl(0, 0%, 0%);
+  --calc-dark: hsl(0, 0%, 10.2%);
+  --calc-gray: hsl(0, 0%, 16.5%);
+  --calc-accent: hsl(174, 100%, 41.6%);
+  --calc-text: hsl(0, 0%, 100%);
+  --calc-text-secondary: hsl(0, 0%, 80%);
+  --calc-warning: hsl(0, 84.2%, 60.2%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 16.5%);
+  --muted-foreground: hsl(0, 0%, 80%);
+  --popover: hsl(0, 0%, 10.2%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --card: hsl(0, 0%, 10.2%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 16.5%);
+  --input: hsl(0, 0%, 16.5%);
+  --primary: hsl(174, 100%, 41.6%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(0, 0%, 16.5%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --accent: hsl(0, 0%, 16.5%);
+  --accent-foreground: hsl(0, 0%, 100%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--calc-black);
+    color: var(--calc-text);
+  }
+}
+
+/* Custom calculator styles */
+.calc-bg {
+  background-color: var(--calc-black);
+}
+
+.calc-dark-bg {
+  background-color: var(--calc-dark);
+}
+
+.calc-gray-bg {
+  background-color: var(--calc-gray);
+}
+
+.calc-accent-bg {
+  background-color: var(--calc-accent);
+}
+
+.calc-text {
+  color: var(--calc-text);
+}
+
+.calc-text-secondary {
+  color: var(--calc-text-secondary);
+}
+
+.calc-accent-text {
+  color: var(--calc-accent);
+}
+
+/* Button hover effects */
+.calc-button {
+  transition: all 0.2s ease;
+}
+
+.calc-button:hover {
+  background-color: var(--calc-accent);
+  color: var(--calc-black);
+}
+
+.calc-equals-button {
+  background-color: var(--calc-accent);
+  color: var(--calc-black);
+}
+
+.calc-equals-button:hover {
+  background-color: hsl(174, 100%, 45%);
+}
