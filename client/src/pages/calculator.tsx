@@ -6,6 +6,10 @@ import { CalculationResult, calculatorEngine } from '@/lib/calculator';
 
 export default function Calculator() {
   const [history, setHistory] = useState<CalculationResult[]>([]);
+  const [calculatorMethods, setCalculatorMethods] = useState<{
+    insertFunction: (func: string) => void;
+    insertVariable: (variable: string) => void;
+  } | null>(null);
 
   useEffect(() => {
     // Load history on component mount
@@ -61,15 +65,15 @@ export default function Calculator() {
   };
 
   const handleSidebarFunctionClick = (func: string) => {
-    // This would need to be connected to the calculator display
-    // For now, we'll just log it
-    console.log('Sidebar function clicked:', func);
+    if (calculatorMethods) {
+      calculatorMethods.insertFunction(func);
+    }
   };
 
   const handleSidebarVariableClick = (variable: string) => {
-    // This would need to be connected to the calculator display
-    // For now, we'll just log it
-    console.log('Sidebar variable clicked:', variable);
+    if (calculatorMethods) {
+      calculatorMethods.insertVariable(variable);
+    }
   };
 
   return (
@@ -84,7 +88,10 @@ export default function Calculator() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Calculator Display and Input */}
-          <CalculatorDisplay onHistoryUpdate={handleHistoryUpdate} />
+          <CalculatorDisplay 
+            onHistoryUpdate={handleHistoryUpdate} 
+            onMount={setCalculatorMethods}
+          />
 
           {/* Sidebar with Advanced Functions */}
           <AdvancedFunctionsSidebar 

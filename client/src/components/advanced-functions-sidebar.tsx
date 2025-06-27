@@ -48,7 +48,7 @@ export function AdvancedFunctionsSidebar({ onFunctionClick, onVariableClick }: A
     { label: 'φ', value: 'phi' },
   ];
 
-  const variables = ['x', 'y', 'z', 'n'];
+  const variables = ['z', 'n', 't', 'a'];
 
   return (
     <div className="calc-dark-bg rounded-3xl p-8 shadow-2xl border border-gray-800">

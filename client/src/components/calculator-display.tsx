@@ -1,16 +1,34 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { calculatorEngine, CalculationResult } from '@/lib/calculator';
 
 interface CalculatorDisplayProps {
   onHistoryUpdate: (history: CalculationResult[]) => void;
+  onMount?: (methods: { insertFunction: (func: string) => void; insertVariable: (variable: string) => void }) => void;
 }
 
-export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
+export function CalculatorDisplay({ onHistoryUpdate, onMount }: CalculatorDisplayProps) {
   const [currentInput, setCurrentInput] = useState('');
   const [result, setResult] = useState('');
   const [isDerivativeMode, setIsDerivativeMode] = useState(false);
   const [isIntegralMode, setIsIntegralMode] = useState(false);
+
+  // Create methods for external insertion
+  const insertFunction = (func: string) => {
+    const template = calculatorEngine.getFunctionTemplate(func);
+    setCurrentInput(prev => prev + template);
+  };
+
+  const insertVariable = (variable: string) => {
+    setCurrentInput(prev => prev + variable);
+  };
+
+  // Expose methods to parent on mount
+  useEffect(() => {
+    if (onMount) {
+      onMount({ insertFunction, insertVariable });
+    }
+  }, [onMount]);
 
   const handleNumberClick = (number: string) => {
     setCurrentInput(prev => prev + number);
@@ -221,6 +239,12 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
           e
         </Button>
         <Button 
+          className="calc-light-gray-bg calc-button calc-text p-4 rounded-xl font-semibold text-lg hover:scale-105"
+          onClick={() => setCurrentInput(prev => prev + 'x')}
+        >
+          x
+        </Button>
+        <Button 
           className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-semibold text-lg hover:scale-105"
           onClick={() => setCurrentInput(prev => prev + '(')}
         >
@@ -231,6 +255,38 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
           onClick={() => setCurrentInput(prev => prev + ')')}
         >
           )
+        </Button>
+
+        {/* Row 4: More Functions */}
+        <Button 
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
+          onClick={() => setCurrentInput(prev => prev + '^(')}
+        >
+          x^y
+        </Button>
+        <Button 
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
+          onClick={() => handleFunctionClick('abs')}
+        >
+          |x|
+        </Button>
+        <Button 
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
+          onClick={() => setCurrentInput(prev => prev + '!')}
+        >
+          n!
+        </Button>
+        <Button 
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
+          onClick={() => setCurrentInput(prev => prev + ',')}
+        >
+          ,
+        </Button>
+        <Button 
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
+          onClick={() => setCurrentInput(prev => prev + 'y')}
+        >
+          y
         </Button>
         <Button 
           className="calc-gray-bg calc-button calc-text p-4 rounded-xl font-semibold text-xl hover:scale-105"
