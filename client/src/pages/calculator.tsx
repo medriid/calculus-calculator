@@ -75,9 +75,9 @@ export default function Calculator() {
   return (
     <div className="min-h-screen calc-bg p-4">
       {/* Header */}
-      <header className="text-center py-6">
-        <h1 className="text-4xl font-bold calc-accent-text mb-2">Men's Calculusator</h1>
-        <p className="calc-text-secondary text-lg">Advanced Mathematical Calculator</p>
+      <header className="text-center py-8">
+        <h1 className="text-5xl font-bold calc-accent-text mb-3 tracking-tight">Med's Calculusator</h1>
+        <p className="calc-text-secondary text-xl font-light">Calculus</p>
       </header>
 
       {/* Main Calculator Container */}
@@ -102,8 +102,8 @@ export default function Calculator() {
 
       {/* Footer */}
       <footer className="text-center py-8 mt-8">
-        <p className="calc-text-secondary text-sm">
-          © 2024 Men's Calculusator - Advanced Mathematical Computing
+        <p className="calc-text-muted text-sm">
+          © 2025 Med's Calculusator - Calculus Computing
         </p>
       </footer>
     </div>

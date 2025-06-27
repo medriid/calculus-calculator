@@ -7,55 +7,58 @@
   --background: hsl(0, 0%, 0%);
   --foreground: hsl(0, 0%, 100%);
   --muted: hsl(0, 0%, 16.5%);
-  --muted-foreground: hsl(0, 0%, 80%);
-  --popover: hsl(0, 0%, 10.2%);
+  --muted-foreground: hsl(0, 0%, 70%);
+  --popover: hsl(0, 0%, 8%);
   --popover-foreground: hsl(0, 0%, 100%);
-  --card: hsl(0, 0%, 10.2%);
+  --card: hsl(0, 0%, 8%);
   --card-foreground: hsl(0, 0%, 100%);
-  --border: hsl(0, 0%, 16.5%);
-  --input: hsl(0, 0%, 16.5%);
-  --primary: hsl(174, 100%, 41.6%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 12%);
+  --primary: hsl(0, 0%, 100%);
   --primary-foreground: hsl(0, 0%, 0%);
   --secondary: hsl(0, 0%, 16.5%);
   --secondary-foreground: hsl(0, 0%, 100%);
-  --accent: hsl(0, 0%, 16.5%);
+  --accent: hsl(0, 0%, 25%);
   --accent-foreground: hsl(0, 0%, 100%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(0, 0%, 100%);
-  --radius: 0.5rem;
+  --destructive: hsl(0, 62.8%, 50%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 80%);
+  --radius: 0.75rem;
   
-  /* Custom calculator colors */
+  /* Custom calculator colors - Pure monochrome */
   --calc-black: hsl(0, 0%, 0%);
-  --calc-dark: hsl(0, 0%, 10.2%);
-  --calc-gray: hsl(0, 0%, 16.5%);
-  --calc-accent: hsl(174, 100%, 41.6%);
+  --calc-dark: hsl(0, 0%, 8%);
+  --calc-medium: hsl(0, 0%, 15%);
+  --calc-gray: hsl(0, 0%, 25%);
+  --calc-light-gray: hsl(0, 0%, 35%);
+  --calc-accent: hsl(0, 0%, 90%);
   --calc-text: hsl(0, 0%, 100%);
-  --calc-text-secondary: hsl(0, 0%, 80%);
-  --calc-warning: hsl(0, 84.2%, 60.2%);
+  --calc-text-secondary: hsl(0, 0%, 70%);
+  --calc-text-muted: hsl(0, 0%, 50%);
+  --calc-warning: hsl(0, 0%, 80%);
 }
 
 .dark {
   --background: hsl(0, 0%, 0%);
   --foreground: hsl(0, 0%, 100%);
   --muted: hsl(0, 0%, 16.5%);
-  --muted-foreground: hsl(0, 0%, 80%);
-  --popover: hsl(0, 0%, 10.2%);
+  --muted-foreground: hsl(0, 0%, 70%);
+  --popover: hsl(0, 0%, 8%);
   --popover-foreground: hsl(0, 0%, 100%);
-  --card: hsl(0, 0%, 10.2%);
+  --card: hsl(0, 0%, 8%);
   --card-foreground: hsl(0, 0%, 100%);
-  --border: hsl(0, 0%, 16.5%);
-  --input: hsl(0, 0%, 16.5%);
-  --primary: hsl(174, 100%, 41.6%);
+  --border: hsl(0, 0%, 20%);
+  --input: hsl(0, 0%, 12%);
+  --primary: hsl(0, 0%, 100%);
   --primary-foreground: hsl(0, 0%, 0%);
   --secondary: hsl(0, 0%, 16.5%);
   --secondary-foreground: hsl(0, 0%, 100%);
-  --accent: hsl(0, 0%, 16.5%);
+  --accent: hsl(0, 0%, 25%);
   --accent-foreground: hsl(0, 0%, 100%);
-  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive: hsl(0, 62.8%, 50%);
   --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(0, 0%, 83.9%);
-  --radius: 0.5rem;
+  --ring: hsl(0, 0%, 80%);
+  --radius: 0.75rem;
 }
 
 @layer base {
@@ -71,7 +74,7 @@
   }
 }
 
-/* Custom calculator styles */
+/* Custom calculator styles - Monochrome */
 .calc-bg {
   background-color: var(--calc-black);
 }
@@ -80,8 +83,16 @@
   background-color: var(--calc-dark);
 }
 
+.calc-medium-bg {
+  background-color: var(--calc-medium);
+}
+
 .calc-gray-bg {
   background-color: var(--calc-gray);
+}
+
+.calc-light-gray-bg {
+  background-color: var(--calc-light-gray);
 }
 
 .calc-accent-bg {
@@ -96,25 +107,60 @@
   color: var(--calc-text-secondary);
 }
 
+.calc-text-muted {
+  color: var(--calc-text-muted);
+}
+
 .calc-accent-text {
   color: var(--calc-accent);
 }
 
-/* Button hover effects */
+/* Enhanced button hover effects */
 .calc-button {
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
 }
 
 .calc-button:hover {
   background-color: var(--calc-accent);
   color: var(--calc-black);
+  border-color: var(--calc-text-secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.calc-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
 }
 
 .calc-equals-button {
-  background-color: var(--calc-accent);
+  background-color: var(--calc-text);
   color: var(--calc-black);
+  border: 2px solid var(--calc-text);
 }
 
 .calc-equals-button:hover {
-  background-color: hsl(174, 100%, 45%);
+  background-color: var(--calc-text-secondary);
+  border-color: var(--calc-text-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Special function buttons */
+.calc-special-button {
+  background: linear-gradient(135deg, var(--calc-gray), var(--calc-light-gray));
+  border: 1px solid var(--calc-text-muted);
+}
+
+.calc-special-button:hover {
+  background: var(--calc-accent);
+  color: var(--calc-black);
+  border-color: var(--calc-accent);
+}
+
+/* Display gradient */
+.calc-display {
+  background: linear-gradient(145deg, var(--calc-black), var(--calc-dark));
+  border: 2px solid var(--calc-medium);
 }

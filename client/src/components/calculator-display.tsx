@@ -81,8 +81,17 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
   };
 
   const getModePrefix = () => {
-    if (isDerivativeMode) return 'd/dx[';
-    if (isIntegralMode) return '∫';
+    if (isDerivativeMode) return (
+      <span className="calc-text-secondary font-normal">
+        <span className="text-lg">d</span>
+        <span className="text-xs relative -top-1">/</span>
+        <span className="text-lg">dx</span>
+        <span className="text-xl">[</span>
+      </span>
+    );
+    if (isIntegralMode) return (
+      <span className="calc-text-secondary font-normal text-2xl">∫</span>
+    );
     return '';
   };
 
@@ -93,56 +102,62 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
   };
 
   return (
-    <div className="lg:col-span-2 calc-dark-bg rounded-2xl p-6 shadow-2xl">
+    <div className="lg:col-span-2 calc-dark-bg rounded-3xl p-8 shadow-2xl border border-gray-800">
       {/* Display Area */}
-      <div className="mb-6">
-        <div className="calc-bg rounded-xl p-4 min-h-[120px] border border-gray-700">
-          <div className="text-sm calc-text-secondary mb-2">Input:</div>
-          <div className="text-2xl font-mono mb-4 min-h-[32px] calc-text break-words">
-            {getModePrefix()}{currentInput || 'Enter expression...'}{getModeSuffix()}
+      <div className="mb-8">
+        <div className="calc-display rounded-2xl p-6 min-h-[140px]">
+          <div className="text-sm calc-text-muted mb-3 uppercase tracking-wide font-medium">Input</div>
+          <div className="text-2xl font-mono mb-6 min-h-[36px] calc-text break-words leading-relaxed flex items-center">
+            {getModePrefix()}
+            <span>{currentInput || 'Enter expression...'}</span>
+            <span className="calc-text-secondary">{getModeSuffix()}</span>
           </div>
-          <div className="text-sm calc-text-secondary mb-2">Result:</div>
-          <div className="text-3xl font-mono calc-accent-text break-words">
+          <div className="text-sm calc-text-muted mb-3 uppercase tracking-wide font-medium">Result</div>
+          <div className="text-4xl font-mono calc-accent-text break-words leading-relaxed">
             {result || 'Ready for calculation'}
           </div>
         </div>
       </div>
 
       {/* Function Buttons Grid */}
-      <div className="grid grid-cols-6 gap-3 mb-6">
+      <div className="grid grid-cols-6 gap-4 mb-8">
         {/* Row 1: Advanced Functions */}
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-special-button calc-button calc-text p-4 rounded-xl font-medium text-sm hover:scale-105"
           onClick={() => handleFunctionClick('d/dx')}
         >
-          d/dx
+          <span className="flex items-center justify-center">
+            <span className="text-base">d</span>
+            <span className="text-xs mx-0.5">/</span>
+            <span className="text-base">dx</span>
+          </span>
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-special-button calc-button calc-text p-4 rounded-xl font-medium text-lg hover:scale-105"
           onClick={() => handleFunctionClick('∫')}
         >
           ∫
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('sin')}
         >
           sin
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('cos')}
         >
           cos
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('tan')}
         >
           tan
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-light-gray-bg calc-button calc-text p-4 rounded-xl font-semibold hover:scale-105"
           onClick={handleClear}
         >
           AC
@@ -150,37 +165,37 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
 
         {/* Row 2: More Functions */}
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('ln')}
         >
           ln
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('log')}
         >
           log
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('exp')}
         >
-          exp
+          eˣ
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => setCurrentInput(prev => prev + '^2')}
         >
           x²
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => setCurrentInput(prev => prev + '^3')}
         >
           x³
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-light-gray-bg calc-button calc-text p-4 rounded-xl font-semibold text-lg hover:scale-105"
           onClick={handleBackspace}
         >
           ⌫
@@ -188,37 +203,37 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
 
         {/* Row 3: Additional Functions */}
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('sqrt')}
         >
           √
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('pi')}
         >
           π
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-medium hover:scale-105"
           onClick={() => handleFunctionClick('e')}
         >
           e
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-semibold text-lg hover:scale-105"
           onClick={() => setCurrentInput(prev => prev + '(')}
         >
           (
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-medium-bg calc-button calc-text p-4 rounded-xl font-semibold text-lg hover:scale-105"
           onClick={() => setCurrentInput(prev => prev + ')')}
         >
           )
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-3 rounded-lg font-medium"
+          className="calc-gray-bg calc-button calc-text p-4 rounded-xl font-semibold text-xl hover:scale-105"
           onClick={() => handleOperatorClick('÷')}
         >
           ÷
@@ -226,28 +241,28 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
       </div>
 
       {/* Number Pad and Basic Operations */}
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-4 gap-4">
         {/* Row 1 */}
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('7')}
         >
           7
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('8')}
         >
           8
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('9')}
         >
           9
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-gray-bg calc-button calc-text p-6 rounded-2xl text-2xl font-semibold hover:scale-105"
           onClick={() => handleOperatorClick('×')}
         >
           ×
@@ -255,25 +270,25 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
 
         {/* Row 2 */}
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('4')}
         >
           4
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('5')}
         >
           5
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('6')}
         >
           6
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-gray-bg calc-button calc-text p-6 rounded-2xl text-2xl font-semibold hover:scale-105"
           onClick={() => handleOperatorClick('-')}
         >
           -
@@ -281,25 +296,25 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
 
         {/* Row 3 */}
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('1')}
         >
           1
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('2')}
         >
           2
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={() => handleNumberClick('3')}
         >
           3
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-gray-bg calc-button calc-text p-6 rounded-2xl text-2xl font-semibold hover:scale-105"
           onClick={() => handleOperatorClick('+')}
         >
           +
@@ -307,19 +322,19 @@ export function CalculatorDisplay({ onHistoryUpdate }: CalculatorDisplayProps) {
 
         {/* Row 4 */}
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium col-span-2"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium col-span-2 hover:scale-105"
           onClick={() => handleNumberClick('0')}
         >
           0
         </Button>
         <Button 
-          className="calc-gray-bg hover:calc-accent-bg hover:text-black calc-button calc-text p-4 rounded-lg text-xl font-medium"
+          className="calc-dark-bg calc-button calc-text p-6 rounded-2xl text-2xl font-medium hover:scale-105"
           onClick={handleDecimal}
         >
           .
         </Button>
         <Button 
-          className="calc-equals-button hover:bg-emerald-400 text-black p-4 rounded-lg text-xl font-bold transition-all duration-200"
+          className="calc-equals-button text-black p-6 rounded-2xl text-2xl font-bold transition-all duration-200 hover:scale-105"
           onClick={handleCalculate}
         >
           =

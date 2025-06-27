@@ -28,49 +28,49 @@ export function CalculationHistory({ history, onClearHistory }: CalculationHisto
   const getTypeColor = (type: CalculationResult['type']) => {
     switch (type) {
       case 'error':
-        return 'text-red-400';
+        return 'calc-text-muted';
       case 'derivative':
-        return 'text-blue-400';
+        return 'calc-text-secondary';
       case 'integral':
-        return 'text-purple-400';
+        return 'calc-text-secondary';
       default:
         return 'calc-accent-text';
     }
   };
 
   return (
-    <div className="mt-6 calc-dark-bg rounded-2xl p-6 shadow-2xl">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-semibold calc-accent-text">Calculation History</h3>
+    <div className="mt-8 calc-dark-bg rounded-3xl p-8 shadow-2xl border border-gray-800">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-2xl font-bold calc-accent-text tracking-wide">Calculation History</h3>
         <Button
-          className="calc-text-secondary hover:text-red-400 transition-colors duration-200 bg-transparent hover:bg-red-900/20"
+          className="calc-text-muted hover:calc-accent-text transition-colors duration-200 bg-transparent hover:bg-gray-800/30 p-3 rounded-xl"
           onClick={onClearHistory}
         >
-          <Trash2 className="w-4 h-4 mr-2" />
+          <Trash2 className="w-5 h-5 mr-2" />
           Clear
         </Button>
       </div>
       
-      <div className="space-y-3 max-h-64 overflow-y-auto">
+      <div className="space-y-4 max-h-80 overflow-y-auto">
         {history.length === 0 ? (
-          <div className="text-center py-8 calc-text-secondary">
+          <div className="text-center py-12 calc-text-muted">
             No calculations yet. Start calculating to see your history here.
           </div>
         ) : (
           history.map((entry, index) => (
-            <div key={index} className="calc-bg rounded-lg p-3 border border-gray-700">
-              <div className="flex items-center justify-between mb-1">
-                <span className={`text-xs font-mono ${getTypeColor(entry.type)}`}>
+            <div key={index} className="calc-display rounded-xl p-4">
+              <div className="flex items-center justify-between mb-2">
+                <span className={`text-sm font-mono font-medium ${getTypeColor(entry.type)}`}>
                   {getTypeIcon(entry.type)}
                 </span>
-                <span className="text-xs calc-text-secondary">
+                <span className="text-xs calc-text-muted">
                   {formatTimestamp(entry.timestamp)}
                 </span>
               </div>
-              <div className="text-sm calc-text-secondary font-mono mb-1 break-words">
+              <div className="text-sm calc-text-secondary font-mono mb-2 break-words">
                 {entry.input}
               </div>
-              <div className={`font-mono break-words ${getTypeColor(entry.type)}`}>
+              <div className={`font-mono break-words text-base ${getTypeColor(entry.type)}`}>
                 {entry.result}
               </div>
             </div>

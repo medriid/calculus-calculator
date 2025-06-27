@@ -213,31 +213,67 @@ export class CalculatorEngine {
   }
 
   // Mathematical function helpers
-  static getFunctionTemplate(func: string): string {
+  getFunctionTemplate(func: string): string {
     const templates: Record<string, string> = {
+      // Basic trigonometric
       'sin': 'sin(',
       'cos': 'cos(',
       'tan': 'tan(',
+      'sec': '1/cos(',
+      'csc': '1/sin(',
+      'cot': '1/tan(',
+      
+      // Inverse trigonometric
+      'arcsin': 'asin(',
+      'arccos': 'acos(',
+      'arctan': 'atan(',
+      'arcsec': 'asec(',
+      'arccsc': 'acsc(',
+      'arccot': 'acot(',
+      
+      // Hyperbolic
+      'sinh': 'sinh(',
+      'cosh': 'cosh(',
+      'tanh': 'tanh(',
+      'sech': '1/cosh(',
+      'csch': '1/sinh(',
+      'coth': '1/tanh(',
+      
+      // Logarithmic
       'ln': 'ln(',
       'log': 'log10(',
       'log₂': 'log2(',
       'log₁₀': 'log10(',
+      'logₙ': 'log(',
+      
+      // Exponential
       'exp': 'exp(',
+      'e^x': 'exp(',
+      
+      // Power and roots
       'sqrt': 'sqrt(',
+      'cbrt': 'cbrt(',
+      'nthRoot': 'nthRoot(',
+      
+      // Other functions
       'abs': 'abs(',
-      'sinh': 'sinh(',
-      'cosh': 'cosh(',
-      'tanh': 'tanh(',
-      'arcsin': 'asin(',
-      'arccos': 'acos(',
-      'arctan': 'atan(',
-      'sec': '1/cos(',
-      'csc': '1/sin(',
-      'cot': '1/tan(',
-      'sech': '1/cosh(',
+      'floor': 'floor(',
+      'ceil': 'ceil(',
+      'round': 'round(',
+      'sign': 'sign(',
       'factorial': '!',
+      'gamma': 'gamma(',
+      
+      // Constants
       'pi': 'pi',
       'e': 'e',
+      'phi': '1.618033988749', // Golden ratio
+      
+      // Statistical
+      'nCr': 'combinations(',
+      'nPr': 'permutations(',
+      'gcd': 'gcd(',
+      'lcm': 'lcm(',
     };
     
     return templates[func] || func;

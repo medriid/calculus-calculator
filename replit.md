@@ -1,8 +1,8 @@
-# Men's Calculusator - Advanced Mathematical Calculator
+# Med's Calculusator - Advanced Calculus Calculator
 
 ## Overview
 
-Men's Calculusator is a sophisticated web-based scientific calculator application that provides advanced mathematical computation capabilities including derivative and integral calculations. The application features a modern dark-themed UI built with React and TypeScript, offering both basic arithmetic operations and complex mathematical functions.
+Med's Calculusator is a sophisticated web-based scientific calculator application that provides advanced calculus computation capabilities including derivative and integral calculations. The application features a modern monochrome UI built with React and TypeScript, offering both basic arithmetic operations and comprehensive mathematical functions with a sleek black, grey, and white aesthetic.
 
 ## System Architecture
 
@@ -11,7 +11,7 @@ Men's Calculusator is a sophisticated web-based scientific calculator applicatio
 - **Vite** as the build tool and development server for fast hot module replacement
 - **Wouter** for lightweight client-side routing
 - **shadcn/ui** component library with Radix UI primitives for accessible UI components
-- **Tailwind CSS** for utility-first styling with custom dark theme
+- **Tailwind CSS** for utility-first styling with custom monochrome theme (black, grey, white only)
 - **TanStack Query** for state management and data fetching (prepared for future server-side features)
 
 ### Backend Architecture
@@ -70,7 +70,8 @@ Men's Calculusator is a sophisticated web-based scientific calculator applicatio
 
 ### Styling & UI
 - **Tailwind CSS**: Utility-first CSS framework with PostCSS processing
-- **Custom Theme**: Dark-themed calculator interface with cyan accent colors
+- **Custom Theme**: Monochrome calculator interface with pure black, grey, and white colors only
+- **Enhanced Interactions**: Modern button animations with hover effects and scaling
 - **Responsive Design**: Mobile-optimized layout with touch-friendly interactions
 
 ## Deployment Strategy
@@ -95,7 +96,15 @@ Men's Calculusator is a sophisticated web-based scientific calculator applicatio
 
 ```
 Changelog:
-- June 27, 2025. Initial setup
+- June 27, 2025. Initial setup with Men's Calculusator
+- June 27, 2025. Rebranded to Med's Calculusator with complete monochrome redesign
+  - Updated all styling to pure black, grey, and white theme (removed all colors)
+  - Enhanced button animations with hover effects and scaling
+  - Improved d/dx display formatting for better readability
+  - Added more mathematical functions (hyperbolic, combinatorics, special functions)
+  - Updated footer copyright to 2025
+  - Redesigned all components with larger spacing and rounded corners
+  - Added new function categories in sidebar (combinatorics, constants)
 ```
 
 ## User Preferences
